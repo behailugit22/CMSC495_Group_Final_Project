@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sign Up </title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon_ico/favicon-16x16.png' %}">
+
+        <center><h2 style="color: whitesmoke"> News and Weather App </h2></center>
+        
+        <nav>
+            <a style="margin: 10px" href="/homeapp/">Home</a>
+            <a style="margin: 10px" href="/homeapp/forecast">Get Weather</a>
+        </nav>
+    </head>
+    <body>
+        {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p div class="alert alert-warning" role="alert"> {{ error }} </div></p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+<center>
+    <font face="sans-serif";
+    <br>
+        <h2>Sign Up</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    <p> {{ field }}</p> 
+                </div>
+            {% endfor %}
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+    </font>
+        </center>
+    </body>
+</html>
